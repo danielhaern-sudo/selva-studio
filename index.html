@@ -255,7 +255,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-bet
   <div class="stats">
    <div><span class="n2">100 %</span><p>de las pymes estudiadas en Ambato tenía a empleados manejando redes además de sus otras tareas.</p></div>
    <div><span class="n2">$400 a 700</span><p>al mes cuesta un community manager de medio tiempo en Quito.</p></div>
-   <div class="hl"><span class="n2">Desde $60</span><p>al mes con Selva Studio, sin sueldos ni afiliaciones.</p></div>
+   <div class="hl"><span class="n2">Desde $65</span><p>al mes con Selva Studio, sin sueldos ni afiliaciones.</p></div>
   </div>
   <p class="src">Fuentes: estudio de pymes de Ambato, Universidad Técnica de Ambato (Dialnet); oferta de empleo en CazVid, Quito (2026).</p>
   <p class="lead" style="color:inherit">Publicar a la carrera, sin plan, es lo mismo que no publicar. Un gestor de redes da constancia, calidad y medición.</p>
@@ -360,8 +360,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-bet
 {
 const PHONE='593987090244', PHONE_SHOW='098 709 0244';
 const plans=[
- {name:'Arranque',price:'$50',per:'pago único',who:'Para locales que recién empiezan en redes',items:['Cuentas de Facebook, Instagram, TikTok y WhatsApp Business','Perfil con tu marca','3 publicaciones de presentación'],star:false},
- {name:'Contenido',price:'$60',per:'al mes',who:'Para quien ya tiene redes y le falta contenido',items:['8 publicaciones al mes','4 videos con IA y 4 diseños','Textos, hashtags y calendario'],star:false},
+ {name:'Arranque',price:'$50',per:'pago único',who:'Para locales que recién empiezan en redes',items:['Creación de tus cuentas de Facebook, Instagram, TikTok y WhatsApp Business','Perfil con tu marca','3 videos de presentación'],star:false},
+ {name:'Contenido',price:'$65',per:'al mes',who:'Para quien ya tiene redes y le falta contenido',items:['10 videos al mes hechos con IA','Textos y hashtags para cada video','Calendario de publicaciones'],star:false},
  {name:'Redes Pro',price:'$80',per:'al mes',who:'Para olvidarte de las redes y enfocarte en tu local',items:['Todo lo del paquete Contenido','Publicamos y respondemos mensajes','Google Maps de tu local','Reporte mensual de resultados'],star:true}
 ];
 const extras=[
@@ -388,6 +388,7 @@ $('#cases').innerHTML=cases.map(c=>`<article class="case"><span class="ctag">${c
 document.querySelectorAll('[data-plan]').forEach(a=>a.addEventListener('click',()=>{const i=plans.findIndex(p=>p.name===a.dataset.plan);if(i>=0)$('#paquete').selectedIndex=i}));
 $('#f').addEventListener('submit',e=>{
  e.preventDefault();
+ try{fetch('https://formsubmit.co/ajax/danielhaern@gmail.com',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({_subject:'Nuevo cliente desde la web de Selva Studio',Nombre:$('#nombre').value.trim(),Local:$('#local').value.trim(),Paquete:$('#paquete').value,Mensaje:$('#msg').value.trim(),_template:'table',_captcha:'false'})}).catch(()=>{})}catch(err){}
  const t=`Hola Selva Studio, soy ${$('#nombre').value.trim()} del local ${$('#local').value.trim()}. Me interesa: ${$('#paquete').value}. ${$('#msg').value.trim()}`;
  const url='https://wa.me/'+PHONE+'?text='+encodeURIComponent(t);
  const o=$('#out');o.textContent='';const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener';a.textContent='Abrir WhatsApp con tu mensaje';a.style.fontWeight='600';o.append('Listo. ',a);
